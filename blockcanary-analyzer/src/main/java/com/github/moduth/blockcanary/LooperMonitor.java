@@ -86,7 +86,8 @@ class LooperMonitor implements Printer {
         if (null != BlockCanaryInternals.getInstance().stackSampler) {
             BlockCanaryInternals.getInstance().stackSampler.start();
         }
-
+        // 读取cpu相关信息 系统运行状态
+        // /proc/stat sdk高版本不可以读取这个文件了
         if (null != BlockCanaryInternals.getInstance().cpuSampler) {
             BlockCanaryInternals.getInstance().cpuSampler.start();
         }

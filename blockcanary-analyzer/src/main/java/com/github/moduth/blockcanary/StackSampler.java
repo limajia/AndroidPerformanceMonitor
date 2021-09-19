@@ -60,6 +60,9 @@ class StackSampler extends AbstractSampler {
     protected void doSample() {
         StringBuilder stringBuilder = new StringBuilder();
 
+        // 子线程中 获取主线程的此时的栈信息  不要滥用 获取主线程的堆栈 会暂定主线程的
+        // new Throwable().printStackTrace();通过native 拿VM-specific的当前线程的栈信息
+        //
         for (StackTraceElement stackTraceElement : mCurrentThread.getStackTrace()) {
             stringBuilder
                     .append(stackTraceElement.toString())
